@@ -239,6 +239,139 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2017/10/01/c-progress/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="金金金金金金金金金">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="金金金金金金金金金">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="金金金金金金金金金" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/01/c-progress/" itemprop="url">
+                  用C语言模拟进度条
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-01T12:56:36+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用C语言搞了一个模拟的进度条<br>首先要知道三个事情:</p>
+<ul>
+<li>1 \r 和 \n 的不同</li>
+</ul>
+<p>\r 是输出位置回到行首<br>\n 是输出位置到下一行</p>
+<ul>
+<li><p>2 printf() 默认是行输出，所以没有完成一行的时候想要保证输出，每次要fflush(stdout);</p>
+</li>
+<li><p>3 在不断打印进度条的过程中，为了屏蔽来自键盘输入回车，用了<a href="https://blog.csdn.net/liuqz2009/article/details/51967763" target="_blank" rel="noopener">tcsetattr</a>。通过这个可以改键。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int progress()</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    char progress[40] = &quot;----------------------------------------&quot;;</span><br><span class="line">    struct termios term_orig;</span><br><span class="line">    struct termios term_modify;</span><br><span class="line"></span><br><span class="line">    //shield return from keybord when printing</span><br><span class="line">    tcgetattr(STDIN_FILENO, &amp;term_orig);</span><br><span class="line">    term_modify = term_orig;</span><br><span class="line">    term_modify.c_iflag = term_orig.c_iflag | IGNCR;</span><br><span class="line">    tcsetattr(STDIN_FILENO, TCSAFLUSH, &amp;term_modify);</span><br><span class="line"></span><br><span class="line">    for(i = 1; i &lt;= 100; i++)&#123;</span><br><span class="line">        write(STDOUT_FILENO, &quot;\r&quot;, 1);</span><br><span class="line">        write(STDOUT_FILENO, progress, i / 10 * 4);</span><br><span class="line">        printf(&quot; %%%d&quot;, i);</span><br><span class="line">        fflush(stdout);</span><br><span class="line">        usleep(50000);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    tcsetattr(STDIN_FILENO, TCSAFLUSH, &amp;term_orig);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://guoxin.site/2017/08/14/gen_random_with_shell/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1644,132 +1777,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2017/02/10/monkey-banana/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="金金金金金金金金金">
-    <meta itemprop="description" content>
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="金金金金金金金金金">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="金金金金金金金金金" src>
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/10/monkey-banana/" itemprop="url">
-                  猴子吃香蕉问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T21:44:50+08:00">
-                2017-02-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>一个小猴子边上有100 根香蕉，它要走过50 米才能到家，每次它最多搬50 根香蕉，每走1 米就要吃掉一根，请问它最多能把多少根香蕉搬到家里?</p>
-</blockquote>
-<blockquote>
-<p>解答：设 小猴从0 走到50, 到A 点时候他可以直接抱香蕉回家了, 可是到A 点时候他至少消耗了3A 的香蕉( 到A, 回0, 到A), 一个限制就是小猴只能抱50 只香蕉, 那么在A 点小猴最多49 只香蕉.100-3A=49, 所以A=17.   这样折腾完到家的时候香蕉剩100-3A-(50-A)=50-2A=16.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1815,7 +1822,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

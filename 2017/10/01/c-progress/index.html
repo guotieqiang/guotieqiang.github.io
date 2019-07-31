@@ -87,19 +87,17 @@
 
 
 
-<meta name="description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
+<meta name="description" content="用C语言搞了一个模拟的进度条首先要知道三个事情:  1 \r 和 \n 的不同  \r 是输出位置回到行首\n 是输出位置到下一行  2 printf() 默认是行输出，所以没有完成一行的时候想要保证输出，每次要fflush(stdout);  3 在不断打印进度条的过程中，为了屏蔽来自键盘输入回车，用了tcsetattr。通过这个可以改键。   1234567891011121314151617">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最美不是下雨天">
-<meta property="og:url" content="http://guoxin.site/2016/07/20/rainday/index.html">
+<meta property="og:title" content="用C语言模拟进度条">
+<meta property="og:url" content="http://guoxin.site/2017/10/01/c-progress/index.html">
 <meta property="og:site_name" content="金金金金金金金金金">
-<meta property="og:description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
+<meta property="og:description" content="用C语言搞了一个模拟的进度条首先要知道三个事情:  1 \r 和 \n 的不同  \r 是输出位置回到行首\n 是输出位置到下一行  2 printf() 默认是行输出，所以没有完成一行的时候想要保证输出，每次要fflush(stdout);  3 在不断打印进度条的过程中，为了屏蔽来自键盘输入回车，用了tcsetattr。通过这个可以改键。   1234567891011121314151617">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://guoxin.site/2016/07/20/rainday/tu.jpg">
-<meta property="og:updated_time" content="2019-07-22T07:44:12.880Z">
+<meta property="og:updated_time" content="2019-07-31T07:00:55.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最美不是下雨天">
-<meta name="twitter:description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
-<meta name="twitter:image" content="http://guoxin.site/2016/07/20/rainday/tu.jpg">
+<meta name="twitter:title" content="用C语言模拟进度条">
+<meta name="twitter:description" content="用C语言搞了一个模拟的进度条首先要知道三个事情:  1 \r 和 \n 的不同  \r 是输出位置回到行首\n 是输出位置到下一行  2 printf() 默认是行输出，所以没有完成一行的时候想要保证输出，每次要fflush(stdout);  3 在不断打印进度条的过程中，为了屏蔽来自键盘输入回车，用了tcsetattr。通过这个可以改键。   1234567891011121314151617">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://guoxin.site/2016/07/20/rainday/">
+  <link rel="canonical" href="http://guoxin.site/2017/10/01/c-progress/">
 
 
 
 
 
-  <title> 最美不是下雨天 | 金金金金金金金金金 </title>
+  <title> 用C语言模拟进度条 | 金金金金金金金金金 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +238,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2016/07/20/rainday/">
+  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2017/10/01/c-progress/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="金金金金金金金金金">
@@ -264,7 +262,7 @@
             
             
               
-                最美不是下雨天
+                用C语言模拟进度条
               
             
           </h1>
@@ -279,8 +277,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-20T22:34:46+08:00">
-                2016-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-01T12:56:36+08:00">
+                2017-10-01
               </time>
             
 
@@ -315,7 +313,19 @@
       
 
       
-        <p>人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。<br><img src="/2016/07/20/rainday/tu.jpg" alt="log"></p>
+        <p>用C语言搞了一个模拟的进度条<br>首先要知道三个事情:</p>
+<ul>
+<li>1 \r 和 \n 的不同</li>
+</ul>
+<p>\r 是输出位置回到行首<br>\n 是输出位置到下一行</p>
+<ul>
+<li><p>2 printf() 默认是行输出，所以没有完成一行的时候想要保证输出，每次要fflush(stdout);</p>
+</li>
+<li><p>3 在不断打印进度条的过程中，为了屏蔽来自键盘输入回车，用了<a href="https://blog.csdn.net/liuqz2009/article/details/51967763" target="_blank" rel="noopener">tcsetattr</a>。通过这个可以改键。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int progress()</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    char progress[40] = &quot;----------------------------------------&quot;;</span><br><span class="line">    struct termios term_orig;</span><br><span class="line">    struct termios term_modify;</span><br><span class="line"></span><br><span class="line">    //shield return from keybord when printing</span><br><span class="line">    tcgetattr(STDIN_FILENO, &amp;term_orig);</span><br><span class="line">    term_modify = term_orig;</span><br><span class="line">    term_modify.c_iflag = term_orig.c_iflag | IGNCR;</span><br><span class="line">    tcsetattr(STDIN_FILENO, TCSAFLUSH, &amp;term_modify);</span><br><span class="line"></span><br><span class="line">    for(i = 1; i &lt;= 100; i++)&#123;</span><br><span class="line">        write(STDOUT_FILENO, &quot;\r&quot;, 1);</span><br><span class="line">        write(STDOUT_FILENO, progress, i / 10 * 4);</span><br><span class="line">        printf(&quot; %%%d&quot;, i);</span><br><span class="line">        fflush(stdout);</span><br><span class="line">        usleep(50000);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    tcsetattr(STDIN_FILENO, TCSAFLUSH, &amp;term_orig);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -346,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/13/fight/" rel="next" title="now fight!">
-                <i class="fa fa-chevron-left"></i> now fight!
+              <a href="/2017/08/14/gen_random_with_shell/" rel="next" title="Shell生成随机数">
+                <i class="fa fa-chevron-left"></i> Shell生成随机数
               </a>
             
           </div>
@@ -355,10 +365,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/30/where-belong/" rel="prev" title="我曾来过？">
-                我曾来过？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
