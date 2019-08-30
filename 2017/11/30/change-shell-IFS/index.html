@@ -87,19 +87,17 @@
 
 
 
-<meta name="description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
+<meta name="description" content="shell命令解析输入字符串的默认分割符是水平制表符（tab），空格（space)和换行（newline）要改变当前shell的默认分割符，用IFS的环境变量。  默认的分割符123[root@centos01 tmp]# echo -n &amp;quot;$IFS&amp;quot; | hexdump0000000 0920 000a0000003    十六进制值0x20, 0x09和0x0a分别对应于空">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最美不是下雨天">
-<meta property="og:url" content="http://guoxin.site/2016/07/20/rainday/index.html">
+<meta property="og:title" content="SHELL字符分割的IFS变量">
+<meta property="og:url" content="http://guoxin.site/2017/11/30/change-shell-IFS/index.html">
 <meta property="og:site_name" content="金金金金金金金金金">
-<meta property="og:description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
+<meta property="og:description" content="shell命令解析输入字符串的默认分割符是水平制表符（tab），空格（space)和换行（newline）要改变当前shell的默认分割符，用IFS的环境变量。  默认的分割符123[root@centos01 tmp]# echo -n &amp;quot;$IFS&amp;quot; | hexdump0000000 0920 000a0000003    十六进制值0x20, 0x09和0x0a分别对应于空">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://guoxin.site/2016/07/20/rainday/tu.jpg">
-<meta property="og:updated_time" content="2019-07-22T07:44:12.880Z">
+<meta property="og:updated_time" content="2019-08-30T02:07:16.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最美不是下雨天">
-<meta name="twitter:description" content="人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。">
-<meta name="twitter:image" content="http://guoxin.site/2016/07/20/rainday/tu.jpg">
+<meta name="twitter:title" content="SHELL字符分割的IFS变量">
+<meta name="twitter:description" content="shell命令解析输入字符串的默认分割符是水平制表符（tab），空格（space)和换行（newline）要改变当前shell的默认分割符，用IFS的环境变量。  默认的分割符123[root@centos01 tmp]# echo -n &amp;quot;$IFS&amp;quot; | hexdump0000000 0920 000a0000003    十六进制值0x20, 0x09和0x0a分别对应于空">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://guoxin.site/2016/07/20/rainday/">
+  <link rel="canonical" href="http://guoxin.site/2017/11/30/change-shell-IFS/">
 
 
 
 
 
-  <title> 最美不是下雨天 | 金金金金金金金金金 </title>
+  <title> SHELL字符分割的IFS变量 | 金金金金金金金金金 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +238,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2016/07/20/rainday/">
+  <link itemprop="mainEntityOfPage" href="http://guoxin.site/2017/11/30/change-shell-IFS/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="金金金金金金金金金">
@@ -264,7 +262,7 @@
             
             
               
-                最美不是下雨天
+                SHELL字符分割的IFS变量
               
             
           </h1>
@@ -279,8 +277,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-20T22:34:46+08:00">
-                2016-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-30T06:48:32+08:00">
+                2017-11-30
               </time>
             
 
@@ -315,7 +313,21 @@
       
 
       
-        <p>人生中最美的, 不是下雨天, 而是一起和你躲雨的屋檐。<br><img src="/2016/07/20/rainday/tu.jpg" alt="log"></p>
+        <p>shell命令解析输入字符串的默认分割符是水平制表符（tab），空格（space)和换行（newline）<br>要改变当前shell的默认分割符，用IFS的环境变量。</p>
+<ul>
+<li>默认的分割符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos01 tmp]# echo -n &quot;$IFS&quot; | hexdump</span><br><span class="line">0000000 0920 000a</span><br><span class="line">0000003</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>十六进制值0x20, 0x09和0x0a分别对应于空格(space), 水平制表符(tab)和换行符(newline)的值。</p>
+<ul>
+<li>下面两个方法的运行结果直接说明问题：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">#default IFS are tab,space,and newline</span><br><span class="line"></span><br><span class="line">not_change_IFS() &#123;</span><br><span class="line"></span><br><span class="line">echo &quot;===========not change IFS==================&quot;</span><br><span class="line">for i in `df -h | head -n 2`;</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">change_IFS() &#123;</span><br><span class="line"></span><br><span class="line">echo &quot;===========change IFS==================&quot;</span><br><span class="line"></span><br><span class="line">#only use \n as delimeter</span><br><span class="line">oldIFS=$IFS</span><br><span class="line">IFS=$&apos;\n&apos;</span><br><span class="line">for i in `df -h | head -n 2`;</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line">IFS=$oldIFS</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">not_change_IFS</span><br><span class="line">change_IFS</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@centos01 tmp]# ./test.sh</span><br><span class="line">===========not change IFS==================</span><br><span class="line">Filesystem</span><br><span class="line">Size</span><br><span class="line">Used</span><br><span class="line">Avail</span><br><span class="line">Use%</span><br><span class="line">Mounted</span><br><span class="line">on</span><br><span class="line">/dev/mapper/rhel-root</span><br><span class="line">6.7G</span><br><span class="line">5.7G</span><br><span class="line">1.1G</span><br><span class="line">85%</span><br><span class="line">/</span><br><span class="line">===========change IFS==================</span><br><span class="line">Filesystem             Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/mapper/rhel-root  6.7G  5.7G  1.1G  85% /</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -346,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/13/fight/" rel="next" title="now fight!">
-                <i class="fa fa-chevron-left"></i> now fight!
+              <a href="/2017/10/01/c-progress/" rel="next" title="用C语言模拟进度条">
+                <i class="fa fa-chevron-left"></i> 用C语言模拟进度条
               </a>
             
           </div>
@@ -355,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/30/where-belong/" rel="prev" title="我曾来过？">
-                我曾来过？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
